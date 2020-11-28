@@ -29,7 +29,7 @@ abstract class AnalyticsServiceImpl extends AnalyticsService {
     if (isMobile) {
       return analytics
           .logEvent(name: name, parameters: parameters)
-          .then((_) => onSuccess)
+          .then((_) => onSuccess(name,parameters))
           .catchError(onError);
     } else {
       onError(MyException('Error: Not logging firebase analytics.'));
@@ -46,5 +46,5 @@ abstract class AnalyticsServiceImpl extends AnalyticsService {
   void onError(MyException error);
 
   @override
-  void onSuccess();
+  void onSuccess(String name, Map<String, dynamic> parameters);
 }

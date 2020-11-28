@@ -19,5 +19,5 @@ abstract class AnalyticsService {
 
   void onError(MyException exception);
 
-  void onSuccess();
+  void onSuccess(String name, Map<String, dynamic> parameters);
 }
