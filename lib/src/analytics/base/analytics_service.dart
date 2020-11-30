@@ -1,4 +1,5 @@
-import 'package:fa_flutter_core/fa_flutter_core.dart';
+import 'dart:async';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ abstract class AnalyticsService {
 
   FirebaseAnalytics getAnalyticsClient();
 
-  void onError(MyException exception);
+  FutureOr onError(dynamic error, StackTrace stk);
 
   void onSuccess(String name, Map<String, dynamic> parameters);
 }

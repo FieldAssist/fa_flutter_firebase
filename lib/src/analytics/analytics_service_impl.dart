@@ -29,10 +29,13 @@ abstract class AnalyticsServiceImpl extends AnalyticsService {
     if (isMobile) {
       return analytics
           .logEvent(name: name, parameters: parameters)
-          .then((_) => onSuccess(name,parameters))
+          .then((_) => onSuccess(name, parameters))
           .catchError(onError);
     } else {
-      onError(MyException('Error: Not logging firebase analytics.'));
+      onError(
+        MyException('Error: Not logging firebase analytics.'),
+        StackTrace.current,
+      );
       return null;
     }
   }
@@ -43,7 +46,7 @@ abstract class AnalyticsServiceImpl extends AnalyticsService {
   }
 
   @override
-  void onError(MyException error);
+  FutureOr onError(dynamic error, StackTrace stk);
 
   @override
   void onSuccess(String name, Map<String, dynamic> parameters);
