@@ -1,8 +1,9 @@
 name: fa_flutter_firebase
 description: A new Flutter package.
-version: 0.0.1
-author:
-homepage:
+version: 1.0.0
+author: Ayush P Gupta
+homepage: https://github.com/FieldAssist/fa_flutter_firebase.git
+publish_to: none
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
