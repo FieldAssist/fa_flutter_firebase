@@ -19,7 +19,8 @@ abstract class AnalyticsServiceImpl extends AnalyticsService {
   Future<void> setUserId(String id) => analytics.setUserId(id);
 
   @override
-  Future<void> setUserProperties({required String name, required String value}) {
+  Future<void> setUserProperties(
+      {required String name, required String value}) {
     return analytics.setUserProperty(name: name, value: value);
   }
 

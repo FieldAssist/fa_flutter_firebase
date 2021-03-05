@@ -1,13 +1,11 @@
 import 'dart:async';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:flutter/material.dart';
 
 abstract class AnalyticsService {
   Future<void> setUserId(String id);
 
-  Future<void> setUserProperties(
-      {required String name, required String value});
+  Future<void> setUserProperties({required String name, required String value});
 
   Future<void>? setCurrentPage({required String pageName});
 
