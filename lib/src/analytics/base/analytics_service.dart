@@ -7,13 +7,13 @@ abstract class AnalyticsService {
   Future<void> setUserId(String id);
 
   Future<void> setUserProperties(
-      {@required String name, @required String value});
+      {required String name, required String value});
 
-  Future<void> setCurrentPage({@required String pageName});
+  Future<void>? setCurrentPage({required String pageName});
 
-  Future<void> logEvent({
-    @required String name,
-    Map<String, dynamic> parameters,
+  Future<void>? logEvent({
+    required String name,
+    Map<String, dynamic>? parameters,
   });
 
   FirebaseAnalytics getAnalyticsClient();

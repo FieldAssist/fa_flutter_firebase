@@ -11,7 +11,7 @@ abstract class AnalyticsServiceImpl extends AnalyticsService {
   final analytics = FirebaseAnalytics();
 
   @override
-  Future<void> setCurrentPage({String pageName}) {
+  Future<void>? setCurrentPage({String? pageName}) {
     return logEvent(name: pageName);
   }
 
@@ -19,16 +19,16 @@ abstract class AnalyticsServiceImpl extends AnalyticsService {
   Future<void> setUserId(String id) => analytics.setUserId(id);
 
   @override
-  Future<void> setUserProperties({String name, String value}) {
+  Future<void> setUserProperties({required String name, required String value}) {
     return analytics.setUserProperty(name: name, value: value);
   }
 
   @protected
-  Future<void> logEvent(
-      {@required String name, Map<String, dynamic> parameters}) {
+  Future<void>? logEvent(
+      {required String? name, Map<String, dynamic>? parameters}) {
     if (isMobile) {
       return analytics
-          .logEvent(name: name, parameters: parameters)
+          .logEvent(name: name!, parameters: parameters!)
           .then((_) => onSuccess(name, parameters))
           .catchError(onError);
     } else {
@@ -49,5 +49,5 @@ abstract class AnalyticsServiceImpl extends AnalyticsService {
   FutureOr onError(dynamic error, StackTrace stk);
 
   @override
-  void onSuccess(String name, Map<String, dynamic> parameters);
+  void onSuccess(String? name, Map<String, dynamic>? parameters);
 }
